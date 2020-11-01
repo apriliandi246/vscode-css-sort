@@ -1,7 +1,7 @@
 {
-	"name": "css",
+	"name": "sort-it",
 	"displayName": "sort-it",
-	"description": "sort your css properties....",
+	"description": "Sort your css properties....",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.49.0"
@@ -10,16 +10,64 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:css.helloWorld"
+		"onCommand:sort-it.min",
+		"onCommand:sort-it.max"
 	],
 	"main": "./extension.js",
 	"contributes": {
-		"commands": [
-			{
-				"command": "css.helloWorld",
-				"title": "Hello World"
-			}
-		]
+		"commands": [{
+			"command": "sort-it.min",
+			"title": "sort-it-min"
+		}, {
+			"command": "sort-it.max",
+			"title": "sort-it-max"
+		}],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "sort-it.min",
+					"group": "sort-it@1",
+					"when": "resourceLangId == css && editorHasSelection"
+				},
+				{
+					"command": "sort-it.max",
+					"group": "sort-it@2",
+					"when": "resourceLangId == css && editorHasSelection"
+				},
+				{
+					"command": "sort-it.min",
+					"group": "sort-it@3",
+					"when": "resourceLangId == svelte && editorHasSelection"
+				},
+				{
+					"command": "sort-it.max",
+					"group": "sort-it@4",
+					"when": "resourceLangId == svelte && editorHasSelection"
+				}
+			],
+			"editor/context": [
+				{
+					"command": "sort-it.min",
+					"group": "sort-it@1",
+					"when": "resourceLangId == css && editorHasSelection"
+				},
+				{
+					"command": "sort-it.max",
+					"group": "sort-it@2",
+					"when": "resourceLangId == css && editorHasSelection"
+				},
+				{
+					"command": "sort-it.min",
+					"group": "sort-it@3",
+					"when": "resourceLangId == svelte && editorHasSelection"
+				},
+				{
+					"command": "sort-it.max",
+					"group": "sort-it@4",
+					"when": "resourceLangId == svelte && editorHasSelection"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"lint": "eslint .",
