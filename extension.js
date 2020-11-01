@@ -5,6 +5,8 @@ const vscode = require("vscode");
  */
 
 function activate(context) {
+   const MIN_SORT_COMMAND = "sort-it.min";
+   const MAX_SORT_COMMAND = "sort-it.max";
    const editor = vscode.window.activeTextEditor;
 
    if (!editor) {
@@ -17,29 +19,32 @@ function activate(context) {
       return;
    }
 
-   const minSort = vscode.commands.registerCommand("sort-it.min", () => {
-      editor.edit((builder) => {
-         builder.replace(editor.selection, onSort("min"));
-      });
-   });
+   context.subscriptions.push(
+      vscode.commands.registerCommand(MIN_SORT_COMMAND, () => {
+         editor.edit((builder) => {
+            builder.replace(editor.selection, onSort("min"));
+         });
+      })
+   );
 
-   const maxSort = vscode.commands.registerCommand("sort-it.max", () => {
-      editor.edit((builder) => {
-         builder.replace(editor.selection, onSort("max"));
-      });
-   });
+   context.subscriptions.push(
+      vscode.commands.registerCommand(MAX_SORT_COMMAND, () => {
+         editor.edit((builder) => {
+            builder.replace(editor.selection, onSort("max"));
+         });
+      })
+   );
 
-   function onSort(format) {
-      let selectionText = editor.document.getText(editor.selection);
-
-      let result = selectionText
+   function onSort(sortFormat) {
+      let result = editor.document
+         .getText(editor.selection)
          .split(";")
          .join("\n")
          .split("\n")
          .filter((property) => property.trim() !== "")
          .map((property) => property + ";")
          .sort((a, b) =>
-            format === "min"
+            sortFormat === "min"
                ? a.trim().length - b.trim().length
                : b.trim().length - a.trim().length
          )
@@ -47,8 +52,6 @@ function activate(context) {
 
       return result;
    }
-
-   context.subscriptions.push(minSort, maxSort);
 }
 
 exports.activate = activate;
