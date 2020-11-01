@@ -9,6 +9,10 @@
 	"categories": [
 		"Other"
 	],
+	"keywords": [
+		"css",
+		"css sort"
+	],
 	"activationEvents": [
 		"onCommand:sort-it.min",
 		"onCommand:sort-it.max"
