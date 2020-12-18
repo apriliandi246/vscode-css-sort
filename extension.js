@@ -1,10 +1,10 @@
 // @ts-nocheck
 const vscode = require("vscode");
 const cssValidator = require("csstree-validator");
-const editor = vscode.window.activeTextEditor;
 
 function activate(context) {
    const minSort = vscode.commands.registerCommand("sort-it.min", () => {
+      const editor = vscode.window.activeTextEditor;
       const cssProperties = editor.document.getText(editor.selection);
 
       if (!editor) {
@@ -12,21 +12,31 @@ function activate(context) {
          return;
       }
 
-      if (cssProperties.trim().length === 0) {
+      if (!cssProperties.trim()) {
          vscode.window.showInformationMessage("No Properties Selected....");
          return;
       }
 
       if (cssValidator.validate(`.element {${cssProperties}}`).length > 0) {
-         vscode.window.showInformationMessage("Css code is invalid....");
+         vscode.window.showErrorMessage("Css code is invalid....");
       } else {
+         const result = cssProperties
+            .split(";")
+            .join("\n")
+            .split("\n")
+            .filter((property) => property.trim() !== "")
+            .map((property) => property + ";")
+            .sort((a, b) => a.trim().length - b.trim().length)
+            .join("\n");
+
          editor.edit((builder) => {
-            builder.replace(editor.selection, onSort("min", cssProperties));
+            builder.replace(editor.selection, result);
          });
       }
    });
 
    const maxSort = vscode.commands.registerCommand("sort-it.max", () => {
+      const editor = vscode.window.activeTextEditor;
       const cssProperties = editor.document.getText(editor.selection);
 
       if (!editor) {
@@ -34,43 +44,35 @@ function activate(context) {
          return;
       }
 
-      if (cssProperties.trim().length === 0) {
+      if (!cssProperties.trim()) {
          vscode.window.showInformationMessage("No Properties Selected....");
          return;
       }
 
       if (cssValidator.validate(`.element {${cssProperties}}`).length > 0) {
-         vscode.window.showInformationMessage("Css code is invalid....");
+         vscode.window.showErrorMessage("Css code is invalid....");
       } else {
+         const result = cssProperties
+            .split(";")
+            .join("\n")
+            .split("\n")
+            .filter((property) => property.trim() !== "")
+            .map((property) => property + ";")
+            .sort((a, b) => b.trim().length - a.trim().length)
+            .join("\n");
+
          editor.edit((builder) => {
-            builder.replace(editor.selection, onSort("max", cssProperties));
+            builder.replace(editor.selection, result);
          });
       }
    });
 
-   context.subscriptions.push(minSort, maxSort);
+   context.subscriptions.push(minSort);
+   context.subscriptions.push(maxSort);
 }
-
-function onSort(format, cssProperties) {
-   return cssProperties
-      .split(";")
-      .join("\n")
-      .split("\n")
-      .filter((property) => property.trim() !== "")
-      .map((property) => property + ";")
-      .sort((a, b) =>
-         format === "min"
-            ? a.trim().length - b.trim().length
-            : b.trim().length - a.trim().length
-      )
-      .join("\n");
-}
-
-function deactivate() {}
 
 exports.activate = activate;
 
 module.exports = {
    activate,
-   deactivate,
 };
