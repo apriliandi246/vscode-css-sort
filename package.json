@@ -1,6 +1,7 @@
 {
 	"name": "css-sort",
 	"displayName": "css-sort",
+	"publisher": "apriliandi246",
 	"description": "Sort your css properties....",
 	"version": "0.6.0",
 	"engines": {
@@ -61,7 +62,7 @@
 					"group": "sort-it@6",
 					"when": "resourceLangId == html && editorHasSelection"
 				},
-					{
+				{
 					"command": "sort-it.min",
 					"group": "sort-it@7",
 					"when": "resourceLangId == vue && editorHasSelection"
@@ -93,7 +94,7 @@
 					"group": "sort-it@4",
 					"when": "resourceLangId == svelte && editorHasSelection"
 				},
-					{
+				{
 					"command": "sort-it.min",
 					"group": "sort-it@5",
 					"when": "resourceLangId == html && editorHasSelection"
@@ -103,7 +104,7 @@
 					"group": "sort-it@6",
 					"when": "resourceLangId == html && editorHasSelection"
 				},
-					{
+				{
 					"command": "sort-it.min",
 					"group": "sort-it@7",
 					"when": "resourceLangId == vue && editorHasSelection"
@@ -125,7 +126,7 @@
 		"@types/glob": "^7.1.3",
 		"@types/mocha": "^8.2.0",
 		"@types/node": "^12.19.9",
-		"@types/vscode": "^1.52.0",
+		"@types/vscode": "^1.49.0",
 		"eslint": "^7.15.0",
 		"glob": "^7.1.6",
 		"mocha": "^8.2.1",
