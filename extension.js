@@ -19,17 +19,8 @@ function activate(context) {
          return;
       }
 
-      const result = cssProperties
-         .split(";")
-         .join("\n")
-         .split("\n")
-         .filter((property) => property.trim() !== "")
-         .map((property) => property + ";")
-         .sort((a, b) => a.trim().length - b.trim().length)
-         .join("\n");
-
       editor.edit((builder) => {
-         builder.replace(editor.selection, result);
+         builder.replace(editor.selection, onSort("min", cssProperties));
       });
    });
 
@@ -47,22 +38,24 @@ function activate(context) {
          return;
       }
 
-      const result = cssProperties
-         .split(";")
-         .join("\n")
-         .split("\n")
-         .filter((property) => property.trim() !== "")
-         .map((property) => property + ";")
-         .sort((a, b) => b.trim().length - a.trim().length)
-         .join("\n");
-
       editor.edit((builder) => {
-         builder.replace(editor.selection, result);
+         builder.replace(editor.selection, onSort("max", cssProperties));
       });
    });
 
-   context.subscriptions.push(minSort);
-   context.subscriptions.push(maxSort);
+   context.subscriptions.push(minSort, maxSort);
+}
+
+function onSort(format, cssProperties) {
+   return cssProperties
+      .trim()
+      .split(";")
+      .filter((property) => property.toString().trim() !== "")
+      .map((property) => `\t${property.toString().trim()};`)
+      .sort((a, b) =>
+         format === "min" ? a.length - b.length : b.length - a.length
+      )
+      .join("\n");
 }
 
 exports.activate = activate;
