@@ -1,6 +1,8 @@
-// @ts-nocheck
 const vscode = require("vscode");
-const cssValidator = require("csstree-validator");
+
+/**
+ * @param {vscode.ExtensionContext} context
+ */
 
 function activate(context) {
    const minSort = vscode.commands.registerCommand("sort-it.min", () => {
@@ -14,11 +16,6 @@ function activate(context) {
 
       if (!cssProperties.trim()) {
          vscode.window.showInformationMessage("No Properties Selected....");
-         return;
-      }
-
-      if (cssValidator.validate(`.element {${cssProperties}}`).length > 0) {
-         vscode.window.showErrorMessage("Css code is invalid....");
          return;
       }
 
@@ -50,11 +47,6 @@ function activate(context) {
          return;
       }
 
-      if (cssValidator.validate(`.element {${cssProperties}}`).length > 0) {
-         vscode.window.showErrorMessage("Css code is invalid....");
-         return;
-      }
-
       const result = cssProperties
          .split(";")
          .join("\n")
@@ -75,6 +67,9 @@ function activate(context) {
 
 exports.activate = activate;
 
+function deactivate() {}
+
 module.exports = {
    activate,
+   deactivate,
 };
