@@ -2,7 +2,7 @@
    "name": "css-sort",
    "displayName": "css-sort",
    "description": "Sort your css properties and make it easy to read....",
-   "version": "0.6.0",
+   "version": "0.8.0",
    "publisher": "apriliandi246",
    "engines": {
       "vscode": "^1.46.0"
