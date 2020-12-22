@@ -46,16 +46,24 @@ function activate(context) {
    context.subscriptions.push(minSort, maxSort);
 }
 
-function onSort(format, cssProperties) {
-   return cssProperties
+function onSort(format, cssCode) {
+   const cssSelector = cssCode.trim().split("{");
+   const cssProperties = cssSelector.splice(1).join("").trim();
+
+   const result = cssProperties
+      .slice(0, cssProperties.length - 1)
       .trim()
       .split(";")
-      .filter((property) => property.toString().trim() !== "")
-      .map((property) => `\t${property.toString().trim()};`)
+      .filter((property) => property.trim() !== "")
+      .map((property) => `\t${property.trim()};`)
       .sort((a, b) =>
-         format === "min" ? a.length - b.length : b.length - a.length
+         format === "min"
+            ? a.trim().length - b.trim().length
+            : b.trim().length - a.trim().length
       )
       .join("\n");
+
+   return `${cssSelector.join("")} {\n ${result} \n}`;
 }
 
 exports.activate = activate;
