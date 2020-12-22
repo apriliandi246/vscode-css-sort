@@ -25,11 +25,11 @@
       "commands": [
          {
             "command": "sort-it.min",
-            "title": "sort-it-min"
+            "title": "css-sort → 👇"
          },
          {
             "command": "sort-it.max",
-            "title": "sort-it-max"
+            "title": "css-sort → 👆"
          }
       ],
       "menus": {
