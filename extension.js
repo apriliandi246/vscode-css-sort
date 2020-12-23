@@ -5,42 +5,46 @@ const vscode = require("vscode");
  */
 
 function activate(context) {
-   const minSort = vscode.commands.registerCommand("sort-it.min", () => {
+   const minSort = vscode.commands.registerCommand("css-sort.min", () => {
       const editor = vscode.window.activeTextEditor;
-      const cssProperties = editor.document.getText(editor.selection);
+      const cssCode = editor.document.getText(editor.selection);
 
       if (!editor) {
          vscode.window.showInformationMessage("Editor does not exist....");
          return;
       }
 
-      if (!cssProperties.trim()) {
-         vscode.window.showInformationMessage("No Properties Selected....");
+      if (!cssCode.trim()) {
+         vscode.window.showInformationMessage("No CSS code selected....");
          return;
       }
 
-      editor.edit((builder) => {
-         builder.replace(editor.selection, onSort("min", cssProperties));
-      });
+      editor.edit((builder) =>
+         builder.replace(editor.selection, onSort("min", cssCode))
+      );
+
+      editor.document.save();
    });
 
-   const maxSort = vscode.commands.registerCommand("sort-it.max", () => {
+   const maxSort = vscode.commands.registerCommand("css-sort.max", () => {
       const editor = vscode.window.activeTextEditor;
-      const cssProperties = editor.document.getText(editor.selection);
+      const cssCode = editor.document.getText(editor.selection);
 
       if (!editor) {
          vscode.window.showInformationMessage("Editor does not exist....");
          return;
       }
 
-      if (!cssProperties.trim()) {
-         vscode.window.showInformationMessage("No Properties Selected....");
+      if (!cssCode.trim()) {
+         vscode.window.showInformationMessage("No CSS code selected....");
          return;
       }
 
-      editor.edit((builder) => {
-         builder.replace(editor.selection, onSort("max", cssProperties));
-      });
+      editor.edit((builder) =>
+         builder.replace(editor.selection, onSort("max", cssCode))
+      );
+
+      editor.document.save();
    });
 
    context.subscriptions.push(minSort, maxSort);
@@ -63,7 +67,7 @@ function onSort(format, cssCode) {
       )
       .join("\n");
 
-   return `${cssSelector.join("")} {\n ${result} \n}`;
+   return `${cssSelector.join("").trim()} {\n ${result} \n}`.trim();
 }
 
 exports.activate = activate;
