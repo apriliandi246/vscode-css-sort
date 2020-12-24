@@ -1,9 +1,5 @@
 const vscode = require("vscode");
 
-/**
- * @param {vscode.ExtensionContext} context
- */
-
 function activate(context) {
    const minSort = vscode.commands.registerCommand("css-sort.min", () => {
       const editor = vscode.window.activeTextEditor;
@@ -19,8 +15,8 @@ function activate(context) {
          return;
       }
 
-      editor.edit((builder) =>
-         builder.replace(editor.selection, onSort("min", cssCode))
+      editor.edit((oldText) =>
+         oldText.replace(editor.selection, onSort("min", cssCode))
       );
 
       editor.document.save();
@@ -40,8 +36,8 @@ function activate(context) {
          return;
       }
 
-      editor.edit((builder) =>
-         builder.replace(editor.selection, onSort("max", cssCode))
+      editor.edit((oldText) =>
+         oldText.replace(editor.selection, onSort("max", cssCode))
       );
 
       editor.document.save();
@@ -59,15 +55,13 @@ function onSort(format, cssCode) {
       .trim()
       .split(";")
       .filter((property) => property.trim() !== "")
-      .map((property) => `\t${property.trim()};`)
+      .map((property) => property.trim() + ";")
       .sort((a, b) =>
-         format === "min"
-            ? a.trim().length - b.trim().length
-            : b.trim().length - a.trim().length
+         format === "min" ? a.length - b.length : b.length - a.length
       )
       .join("\n");
 
-   return `${cssSelector.join("").trim()} {\n ${result} \n}`.trim();
+   return `${cssSelector.join("").trim()} {\n ${result} \n}`;
 }
 
 exports.activate = activate;
