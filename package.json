@@ -24,53 +24,53 @@
    "contributes": {
       "commands": [
          {
-            "command": "css-sort.min",
-            "title": "css-sort → 👇"
+            "command": "css-sort.max",
+            "title": "Css Sort - max  👆"
          },
          {
-            "command": "css-sort.max",
-            "title": "css-sort → 👆"
+            "command": "css-sort.min",
+            "title": "Css Sort - min    👇"
          }
       ],
       "menus": {
          "editor/context": [
             {
-               "command": "css-sort.min",
-               "group": "sort-it@5",
-               "when": "resourceLangId == html && editorHasSelection"
-            },
-            {
                "command": "css-sort.max",
-               "group": "sort-it@6",
-               "when": "resourceLangId == html && editorHasSelection"
-            },
-            {
-               "command": "css-sort.min",
                "group": "sort-it@1",
-               "when": "resourceLangId == css && editorHasSelection"
+               "when": "resourceLangId == html && editorHasSelection"
             },
             {
-               "command": "css-sort.max",
+               "command": "css-sort.min",
                "group": "sort-it@2",
+               "when": "resourceLangId == html && editorHasSelection"
+            },
+            {
+               "command": "css-sort.max",
+               "group": "sort-it@3",
                "when": "resourceLangId == css && editorHasSelection"
             },
             {
                "command": "css-sort.min",
-               "group": "sort-it@3",
-               "when": "resourceLangId == svelte && editorHasSelection"
+               "group": "sort-it@4",
+               "when": "resourceLangId == css && editorHasSelection"
             },
             {
                "command": "css-sort.max",
-               "group": "sort-it@4",
+               "group": "sort-it@5",
                "when": "resourceLangId == svelte && editorHasSelection"
             },
             {
                "command": "css-sort.min",
+               "group": "sort-it@6",
+               "when": "resourceLangId == svelte && editorHasSelection"
+            },
+            {
+               "command": "css-sort.max",
                "group": "sort-it@7",
                "when": "resourceLangId == vue && editorHasSelection"
             },
             {
-               "command": "css-sort.max",
+               "command": "css-sort.min",
                "group": "sort-it@8",
                "when": "resourceLangId == vue && editorHasSelection"
             }
