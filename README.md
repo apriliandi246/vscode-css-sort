@@ -27,3 +27,7 @@
 <br>
 
 ### Use Prettier extension (recomended) for formating your code, and check _Editor: Format On Save_ in vscode settings....
+
+<br>
+
+### There you go : [vscode extension](https://marketplace.visualstudio.com/items?itemName=apriliandi246.css-sort)
