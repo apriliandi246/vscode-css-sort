@@ -1,80 +1,29 @@
-<h1 align="center">CSS-sort</h1>
+# css-sort
 
-<br />
+<br>
 
-### How to use it?
+### Before
 
-<br />
+![Image of Yaktocat](https://i.ibb.co/VSzbsw8/before.png)
 
-<p align="center">
-  <img src="https://i.ibb.co/60Sk5NY/oie-AKNRT94-Qt1bw.png" alt="this-is-img" />
-</p>
+<br>
 
-<br />
+### Smaller to Bigger
 
-<h3>From this :</h3>
+![Image of Yaktocat](https://i.ibb.co/6DXBWGz/min.jpg)
 
-```css
-.component {
-   white-space: pre-line;
-   display: block;
-   resize: none;
-   font-family: monospace;
-   width: 100%;
-   padding: 15px;
-   border: 1px solid #38444d;
-   font-size: 18px;
-   outline: none;
-   transition: background-color 0.2s;
-   box-sizing: border-box;
-   background-color: #253341;
-   margin-top: 17px;
-   color: #f5f5f5;
-}
-```
+<br>
 
-<br />
+### Bigger to Smaller
 
-<h3>To this (smaller to bigger) :</h3>
+![Image of Yaktocat](https://i.ibb.co/v1bsw1P/max.jpg)
 
-```css
-.component {
-   width: 100%;
-   resize: none;
-   padding: 15px;
-   outline: none;
-   display: block;
-   color: #f5f5f5;
-   font-size: 18px;
-   margin-top: 17px;
-   white-space: pre-line;
-   font-family: monospace;
-   box-sizing: border-box;
-   border: 1px solid #38444d;
-   background-color: #253341;
-   transition: background-color 0.2s;
-}
-```
+<br>
 
-<br />
+### If you are using media query
 
-<h3>Or this (bigger to smaller) :</h3>
+![Image of Yaktocat](https://i.ibb.co/4Vg5ZLh/for-media-query.jpg)
 
-```css
-.component {
-   transition: background-color 0.2s;
-   border: 1px solid #38444d;
-   background-color: #253341;
-   font-family: monospace;
-   box-sizing: border-box;
-   white-space: pre-line;
-   margin-top: 17px;
-   font-size: 18px;
-   display: block;
-   color: #f5f5f5;
-   padding: 15px;
-   outline: none;
-   resize: none;
-   width: 100%;
-}
-```
+<br>
+
+### Use Prettier extension (recomended) for formating your code, and check _Editor: Format On Save_ in vscode settings....
