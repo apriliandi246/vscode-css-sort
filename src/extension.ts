@@ -1,6 +1,5 @@
 import * as vscode from "vscode";
 import { parse, generate } from "css-tree";
-
 // @ts-ignore
 import * as cssValidator from "csstree-validator";
 
@@ -60,29 +59,26 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(minSort, maxSort);
 }
 
-function onSort(format: string, cssCode: string) {
-	let finalResult = "";
-	const ast = parse(cssCode);
-	const result = generate(ast).split("}");
+function onSort(format: string, cssCode: string): string {
+	let finalResult: string = "";
+	const cssAst: any = parse(cssCode);
+	const result: string[] = generate(cssAst).split("}");
 
 	result.pop();
 
 	for (let index = 0; index < result.length; index++) {
-		const cssNode = result[index].split("{");
-		const cssSelector = cssNode[0].trim();
+		const cssNode: string[] = result[index].split("{");
+		const cssSelector: string = cssNode[0].trim();
 
-		const cssProperties = cssNode[1]
+		const cssProperties: string = cssNode[1]
 			.trim()
 			.split(";")
 			.filter((property) => property.trim() !== "")
 			.map((property) => property.trim() + ";")
-			.sort((a, b) =>
-				format === "min" ? a.length - b.length : b.length - a.length
-			)
+			.sort((a, b) => format === "min" ? a.length - b.length : b.length - a.length)
 			.join("\n");
 
-		finalResult += `${cssSelector} {\n ${cssProperties} \n}${index === result.length - 1 ? "\n" : "\n\n"
-			}`;
+		finalResult += `${cssSelector} {\n ${cssProperties} \n}${index === result.length - 1 ? "\n" : "\n\n"}`;
 	}
 
 	return finalResult;
