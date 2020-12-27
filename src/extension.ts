@@ -14,12 +14,12 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 
 		if (!cssCode?.trim()) {
-			vscode.window.showInformationMessage("No CSS code selected....");
+			vscode.window.showWarningMessage("No CSS code selected....");
 			return;
 		}
 
 		if (cssValidator.validate(cssCode).length > 0) {
-			vscode.window.showErrorMessage("Css code is invalid....");
+			vscode.window.showWarningMessage("Css code is invalid....");
 			return;
 		}
 
@@ -40,12 +40,12 @@ export function activate(context: vscode.ExtensionContext) {
 		}
 
 		if (!cssCode?.trim()) {
-			vscode.window.showInformationMessage("No CSS code selected....");
+			vscode.window.showWarningMessage("No CSS code selected....");
 			return;
 		}
 
 		if (cssValidator.validate(cssCode).length > 0) {
-			vscode.window.showErrorMessage("Css code is invalid....");
+			vscode.window.showWarningMessage("Css code is invalid....");
 			return;
 		}
 
