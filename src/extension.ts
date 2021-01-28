@@ -23,9 +23,9 @@ export function activate(context: vscode.ExtensionContext) {
          return;
       }
 
-      editor.edit((oldText) =>
-         oldText.replace(editor.selection, onSort("min", cssCode))
-      );
+      editor.edit((oldText) => {
+         oldText.replace(editor.selection, onSort("min", cssCode));
+      });
 
       editor.document.save();
    });
@@ -49,9 +49,9 @@ export function activate(context: vscode.ExtensionContext) {
          return;
       }
 
-      editor.edit((oldText) =>
-         oldText.replace(editor.selection, onSort("max", cssCode))
-      );
+      editor.edit((oldText) => {
+         oldText.replace(editor.selection, onSort("max", cssCode));
+      });
 
       editor.document.save();
    });
@@ -61,7 +61,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 function onSort(format: string, cssCode: string): string {
    let finalResult: string = "";
-   const cssAst = parse(cssCode);
+   const cssAst = parse(cssCode, { parseValue: false });
    const result: string[] = generate(cssAst).split("}");
 
    result.pop();
