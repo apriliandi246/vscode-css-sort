@@ -1,4 +1,4 @@
-# css-sort 📊
+<h1 align="center">📶 Vscode CSS Sort</h1>
 
 <br>
 
@@ -13,25 +13,25 @@
 
 ## Before :
 
-![Image of Yaktocat](https://i.ibb.co/VSzbsw8/before.png)
+![before](https://i.ibb.co/VSzbsw8/before.png)
 
 <br>
 
 ## Smaller to Bigger :
 
-![Image of Yaktocat](https://i.ibb.co/6DXBWGz/min.jpg)
+![smaller-to-bigger](https://i.ibb.co/6DXBWGz/min.jpg)
 
 <br>
 
 ## Bigger to Smaller :
 
-![Image of Yaktocat](https://i.ibb.co/v1bsw1P/max.jpg)
+![bigger-to-smaller](https://i.ibb.co/v1bsw1P/max.jpg)
 
 <br>
 
 ## When using media query :
 
-![Image of Yaktocat](https://i.ibb.co/4Vg5ZLh/for-media-query.jpg)
+![media-query](https://i.ibb.co/4Vg5ZLh/for-media-query.jpg)
 
 <br>
 
