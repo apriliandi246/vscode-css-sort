@@ -2,12 +2,14 @@
 
 <br>
 
-### Files supported :
+### Language supported :
 
 -  HTML (inside style tag)
 -  CSS
 -  Svelte (inside style tag)
 -  Vue (inside style tag)
+
+### I dont know if this extension work correctly in Css preprocessor like Sass or Scss, because i never try yet. I build this extension for native Css because i always use it....
 
 <br>
 
