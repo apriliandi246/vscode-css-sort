@@ -19,7 +19,8 @@ export function activate(context: vscode.ExtensionContext) {
       }
 
       if (cssValidator.validate(cssCode).length > 0) {
-         vscode.window.showWarningMessage("Css code is invalid....");
+         const error = cssValidator.validate(cssCode);
+         vscode.window.showWarningMessage(`${error[0].message}....`);
          return;
       }
 
@@ -45,7 +46,8 @@ export function activate(context: vscode.ExtensionContext) {
       }
 
       if (cssValidator.validate(cssCode).length > 0) {
-         vscode.window.showWarningMessage("Css code is invalid....");
+         const error = cssValidator.validate(cssCode);
+         vscode.window.showWarningMessage(`${error[0].message}....`);
          return;
       }
 
@@ -56,7 +58,8 @@ export function activate(context: vscode.ExtensionContext) {
       editor.document.save();
    });
 
-   context.subscriptions.push(minSort, maxSort);
+   context.subscriptions.push(minSort);
+   context.subscriptions.push(maxSort);
 }
 
 function onSort(format: string, cssCode: string): string {
