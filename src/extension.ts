@@ -58,8 +58,7 @@ export function activate(context: vscode.ExtensionContext) {
       editor.document.save();
    });
 
-   context.subscriptions.push(minSort);
-   context.subscriptions.push(maxSort);
+   context.subscriptions.push(minSort, maxSort);
 }
 
 function onSort(format: string, cssCode: string): string {

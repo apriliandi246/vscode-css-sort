@@ -1,10 +1,14 @@
 {
    "name": "css-sort",
    "displayName": "css-sort",
-   "description": "Sort your css properties and make it easy to read....",
+   "description": "Vscode extension to sort your CSS properties, and make them easy to read....",
    "version": "1.0.0",
    "engines": {
-      "vscode": "^1.52.0"
+      "vscode": "^1.53.0"
+   },
+   "repository": {
+      "type": "git",
+      "url": "https://github.com/apriliandi246/vscode-css-sort"
    },
    "publisher": "apriliandi246",
    "categories": [
@@ -84,11 +88,11 @@
       "test": "node ./out/test/runTest.js"
    },
    "devDependencies": {
-      "@types/css-tree": "^1.0.4",
+      "@types/css-tree": "^1.0.5",
       "@types/glob": "^7.1.3",
       "@types/mocha": "^8.0.4",
       "@types/node": "^12.11.7",
-      "@types/vscode": "^1.52.0",
+      "@types/vscode": "^1.53.0",
       "@typescript-eslint/eslint-plugin": "^4.9.0",
       "@typescript-eslint/parser": "^4.9.0",
       "eslint": "^7.15.0",
