@@ -14,7 +14,7 @@
    "categories": [
       "Other"
    ],
-   "icon": "images/my-logo.jpg",
+   "icon": "icon/my-logo.jpg",
    "activationEvents": [
       "onCommand:css-sort.min",
       "onCommand:css-sort.max"
