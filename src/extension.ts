@@ -9,18 +9,19 @@ export function activate(context: vscode.ExtensionContext) {
       const cssCode = editor?.document.getText(editor.selection);
 
       if (!editor) {
-         vscode.window.showInformationMessage("Editor does not exist....");
+         vscode.window.showInformationMessage("Editor does not exist");
          return;
       }
 
       if (!cssCode?.trim()) {
-         vscode.window.showWarningMessage("No CSS code selected....");
+         vscode.window.showWarningMessage("No CSS code selected");
          return;
       }
 
       if (cssValidator.validate(cssCode).length > 0) {
-         const error = cssValidator.validate(cssCode);
-         vscode.window.showWarningMessage(`${error[0].message}....`);
+         vscode.window.showWarningMessage(
+            cssValidator.validate(cssCode)[0].message
+         );
          return;
       }
 
@@ -36,18 +37,19 @@ export function activate(context: vscode.ExtensionContext) {
       const cssCode = editor?.document.getText(editor.selection);
 
       if (!editor) {
-         vscode.window.showInformationMessage("Editor does not exist....");
+         vscode.window.showInformationMessage("Editor does not exist");
          return;
       }
 
       if (!cssCode?.trim()) {
-         vscode.window.showWarningMessage("No CSS code selected....");
+         vscode.window.showWarningMessage("No CSS code selected");
          return;
       }
 
       if (cssValidator.validate(cssCode).length > 0) {
-         const error = cssValidator.validate(cssCode);
-         vscode.window.showWarningMessage(`${error[0].message}....`);
+         vscode.window.showWarningMessage(
+            cssValidator.validate(cssCode)[0].message
+         );
          return;
       }
 
@@ -62,14 +64,14 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 function onSort(format: string, cssCode: string): string {
-   let finalResult: string = "";
+   let sortedCssProperties: string = "";
    const cssAst = parse(cssCode, { parseValue: false });
-   const result: string[] = generate(cssAst).split("}");
+   const arrCssProperties: string[] = generate(cssAst).split("}");
 
-   result.pop();
+   arrCssProperties.pop();
 
-   for (let index = 0; index < result.length; index++) {
-      const cssNode: string[] = result[index].split("{");
+   for (let index = 0; index < arrCssProperties.length; index++) {
+      const cssNode: string[] = arrCssProperties[index].split("{");
       const cssSelector: string = cssNode[0].trim();
 
       const cssProperties: string = cssNode[1]
@@ -82,12 +84,12 @@ function onSort(format: string, cssCode: string): string {
          )
          .join("\n");
 
-      finalResult += `${cssSelector} {\n ${cssProperties} \n}${
-         index === result.length - 1 ? "\n" : "\n\n"
+      sortedCssProperties += `${cssSelector} {\n ${cssProperties} \n}${
+         index === arrCssProperties.length - 1 ? "\n" : "\n\n"
       }`;
    }
 
-   return finalResult;
+   return sortedCssProperties;
 }
 
 export function deactivate() {}
