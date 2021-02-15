@@ -6,21 +6,29 @@ import * as cssValidator from "csstree-validator";
 export function activate(context: vscode.ExtensionContext) {
    const minSort = vscode.commands.registerCommand("css-sort.min", () => {
       const editor = vscode.window.activeTextEditor;
-      const cssCode = editor?.document.getText(editor.selection);
+      const cssCode = editor?.document.getText(editor.selection).trim();
 
       if (!editor) {
          vscode.window.showInformationMessage("Editor does not exist");
          return;
       }
 
-      if (!cssCode?.trim()) {
+      if (!cssCode) {
          vscode.window.showWarningMessage("No CSS code selected");
+         return;
+      }
+
+      if (cssCode[cssCode.length - 1] !== "}") {
+         vscode.window.showWarningMessage("Right curly bracket is expected");
          return;
       }
 
       if (cssValidator.validate(cssCode).length > 0) {
          vscode.window.showWarningMessage(
-            cssValidator.validate(cssCode)[0].message
+            cssValidator.validate(cssCode)[0].message ===
+               "LeftCurlyBracket is expected"
+               ? "Left curly bracket is expected"
+               : cssValidator.validate(cssCode)[0].message
          );
          return;
       }
@@ -34,21 +42,29 @@ export function activate(context: vscode.ExtensionContext) {
 
    const maxSort = vscode.commands.registerCommand("css-sort.max", () => {
       const editor = vscode.window.activeTextEditor;
-      const cssCode = editor?.document.getText(editor.selection);
+      const cssCode = editor?.document.getText(editor.selection).trim();
 
       if (!editor) {
          vscode.window.showInformationMessage("Editor does not exist");
          return;
       }
 
-      if (!cssCode?.trim()) {
+      if (!cssCode) {
          vscode.window.showWarningMessage("No CSS code selected");
+         return;
+      }
+
+      if (cssCode[cssCode.length - 1] !== "}") {
+         vscode.window.showWarningMessage("Right curly bracket is expected");
          return;
       }
 
       if (cssValidator.validate(cssCode).length > 0) {
          vscode.window.showWarningMessage(
-            cssValidator.validate(cssCode)[0].message
+            cssValidator.validate(cssCode)[0].message ===
+               "LeftCurlyBracket is expected"
+               ? "Left curly bracket is expected"
+               : cssValidator.validate(cssCode)[0].message
          );
          return;
       }
