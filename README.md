@@ -35,6 +35,12 @@
 
 <br>
 
+## Command Palette :
+
+![command-palette](https://i.ibb.co/Z2YqJHB/menus.png)
+
+<br>
+
 ### I dont know if this extension work correctly in Css preprocessor like Sass or Scss, because i never try yet. I build this extension for native Css because i always use it....
 
 ### Use Prettier extension (recomended) for formating your code, and check _Editor: Format On Save_ in vscode settings....
