@@ -5,6 +5,7 @@ import * as cssValidator from "csstree-validator";
 
 export function activate(context: vscode.ExtensionContext) {
    const minSort = vscode.commands.registerCommand("css-sort.min", () => {
+      let anotherErrors: string = "";
       const editor = vscode.window.activeTextEditor;
       const cssCode = editor?.document.getText(editor.selection).trim();
 
@@ -15,6 +16,23 @@ export function activate(context: vscode.ExtensionContext) {
 
       if (!cssCode) {
          vscode.window.showWarningMessage("No CSS code selected");
+         return;
+      }
+
+      parse(cssCode, {
+         onParseError(error) {
+            if (error.message === "Selector is expected") {
+               anotherErrors = "Selector is expected";
+            }
+
+            if (error.message === "Identifier is expected") {
+               anotherErrors = "Identifier is expected";
+            }
+         },
+      });
+
+      if (anotherErrors !== "") {
+         vscode.window.showWarningMessage(anotherErrors);
          return;
       }
 
@@ -41,6 +59,7 @@ export function activate(context: vscode.ExtensionContext) {
    });
 
    const maxSort = vscode.commands.registerCommand("css-sort.max", () => {
+      let anotherErrors: string = "";
       const editor = vscode.window.activeTextEditor;
       const cssCode = editor?.document.getText(editor.selection).trim();
 
@@ -51,6 +70,23 @@ export function activate(context: vscode.ExtensionContext) {
 
       if (!cssCode) {
          vscode.window.showWarningMessage("No CSS code selected");
+         return;
+      }
+
+      parse(cssCode, {
+         onParseError(error) {
+            if (error.message === "Selector is expected") {
+               anotherErrors = "Selector is expected";
+            }
+
+            if (error.message === "Identifier is expected") {
+               anotherErrors = "Identifier is expected";
+            }
+         },
+      });
+
+      if (anotherErrors !== "") {
+         vscode.window.showWarningMessage(anotherErrors);
          return;
       }
 
