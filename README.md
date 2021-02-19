@@ -2,7 +2,7 @@
 
 <br>
 
-### Language supported :
+### Languages support :
 
 -  HTML (inside style tag)
 -  CSS
