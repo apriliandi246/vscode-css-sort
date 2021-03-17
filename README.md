@@ -2,6 +2,10 @@
 
 <br>
 
+### [Why ???? 🤔](https://apriliandi.xyz/blog/my-first-vscode-extension)
+
+<br>
+
 ### Languages support :
 
 -  HTML (inside style tag)
