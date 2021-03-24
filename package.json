@@ -14,7 +14,7 @@
    "categories": [
       "Other"
    ],
-   "icon": "icon/my-logo.jpg",
+   "icon": "icon/icon.jpeg",
    "activationEvents": [
       "onCommand:css-sort.min",
       "onCommand:css-sort.max"
@@ -28,50 +28,100 @@
          },
          {
             "command": "css-sort.max",
-            "title": "Css Sort - max   👆"
+            "title": "Css Sort - max     👆"
          }
       ],
       "menus": {
          "editor/context": [
             {
-               "command": "css-sort.max",
+               "command": "css-sort.min",
                "group": "sort-it@1",
                "when": "resourceLangId == html && editorHasSelection"
             },
             {
-               "command": "css-sort.min",
+               "command": "css-sort.max",
                "group": "sort-it@2",
                "when": "resourceLangId == html && editorHasSelection"
             },
             {
-               "command": "css-sort.max",
+               "command": "css-sort.min",
                "group": "sort-it@3",
                "when": "resourceLangId == css && editorHasSelection"
             },
             {
-               "command": "css-sort.min",
+               "command": "css-sort.max",
                "group": "sort-it@4",
                "when": "resourceLangId == css && editorHasSelection"
             },
             {
-               "command": "css-sort.max",
+               "command": "css-sort.min",
                "group": "sort-it@5",
-               "when": "resourceLangId == svelte && editorHasSelection"
+               "when": "resourceLangId == scss && editorHasSelection"
+            },
+            {
+               "command": "css-sort.max",
+               "group": "sort-it@6",
+               "when": "resourceLangId == scss && editorHasSelection"
             },
             {
                "command": "css-sort.min",
-               "group": "sort-it@6",
+               "group": "sort-it@7",
                "when": "resourceLangId == svelte && editorHasSelection"
             },
             {
                "command": "css-sort.max",
-               "group": "sort-it@7",
+               "group": "sort-it@8",
+               "when": "resourceLangId == svelte && editorHasSelection"
+            },
+            {
+               "command": "css-sort.min",
+               "group": "sort-it@9",
+               "when": "resourceLangId == vue && editorHasSelection"
+            },
+            {
+               "command": "css-sort.max",
+               "group": "sort-it@10",
                "when": "resourceLangId == vue && editorHasSelection"
             },
             {
                "command": "css-sort.min",
-               "group": "sort-it@8",
-               "when": "resourceLangId == vue && editorHasSelection"
+               "group": "sort-it@11",
+               "when": "resourceLangId == javascript && editorHasSelection"
+            },
+            {
+               "command": "css-sort.max",
+               "group": "sort-it@12",
+               "when": "resourceLangId == javascript && editorHasSelection"
+            },
+            {
+               "command": "css-sort.min",
+               "group": "sort-it@13",
+               "when": "resourceLangId == javascriptreact && editorHasSelection"
+            },
+            {
+               "command": "css-sort.max",
+               "group": "sort-it@14",
+               "when": "resourceLangId == javascriptreact && editorHasSelection"
+            },
+            {
+               "command": "css-sort.min",
+               "group": "sort-it@15",
+               "when": "resourceLangId == typescript && editorHasSelection"
+            },
+            {
+               "command": "css-sort.max",
+               "group": "sort-it@16",
+               "when": "resourceLangId == typescript && editorHasSelection"
+            },
+            {
+               "command": "css-sort.min",
+               "group": "sort-it@17",
+               "when": "resourceLangId == typescriptreact && editorHasSelection"
+            },
+            {
+               "command": "css-sort.max",
+               "group": "sort-it@18",
+               "when": "resourceLangId == typescriptreact && editorHasSelection"
             }
          ]
       }
@@ -105,7 +155,6 @@
       "webpack-cli": "^4.2.0"
    },
    "dependencies": {
-      "css-tree": "^1.1.2",
-      "csstree-validator": "^2.0.0"
+      "css-tree": "^1.1.2"
    }
 }
