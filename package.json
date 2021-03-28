@@ -1,6 +1,6 @@
 {
    "name": "css-sort",
-   "displayName": "css-sort",
+   "displayName": "CSS-Sort",
    "description": "Vscode extension to sort your CSS properties, and make them easy to read....",
    "version": "1.0.0",
    "engines": {
