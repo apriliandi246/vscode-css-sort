@@ -47,7 +47,7 @@ export function activate(context: vscode.ExtensionContext) {
    context.subscriptions.push(minSort, maxSort);
 }
 
-function onSort(format: string, cssCode: string): string {
+function onSort(pattern: string, cssCode: string): string {
    let sortedCssProperties: string = "";
    const cssAst = parse(cssCode, { parseValue: false });
    const arrCssProperties: string[] = generate(cssAst).split("}");
@@ -60,7 +60,7 @@ function onSort(format: string, cssCode: string): string {
          .filter((property) => property.trim() !== "")
          .map((property) => property.trim() + ";")
          .sort((a, b) =>
-            format === "min" ? a.length - b.length : b.length - a.length
+            pattern === "min" ? a.length - b.length : b.length - a.length
          )
          .join("\n");
    }
@@ -79,7 +79,7 @@ function onSort(format: string, cssCode: string): string {
             .filter((property) => property.trim() !== "")
             .map((property) => property.trim() + ";")
             .sort((a, b) =>
-               format === "min" ? a.length - b.length : b.length - a.length
+               pattern === "min" ? a.length - b.length : b.length - a.length
             )
             .join("\n");
 
