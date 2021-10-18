@@ -1,160 +1,154 @@
 {
-   "name": "css-sort",
-   "displayName": "CSS-Sort",
-   "description": "Vscode extension to sort your CSS properties, and make them easy to read....",
-   "version": "1.0.0",
-   "engines": {
-      "vscode": "^1.53.0"
-   },
-   "repository": {
-      "type": "git",
-      "url": "https://github.com/apriliandi246/vscode-css-sort"
-   },
-   "publisher": "apriliandi246",
-   "categories": [
-      "Other"
-   ],
-   "icon": "icon/icon.jpeg",
-   "activationEvents": [
-      "onCommand:css-sort.min",
-      "onCommand:css-sort.max"
-   ],
-   "main": "./dist/extension.js",
-   "contributes": {
-      "commands": [
-         {
-            "command": "css-sort.min",
-            "title": "Css Sort - min     👇"
-         },
-         {
-            "command": "css-sort.max",
-            "title": "Css Sort - max     👆"
-         }
-      ],
-      "menus": {
-         "editor/context": [
-            {
-               "command": "css-sort.min",
-               "group": "sort-it@1",
-               "when": "resourceLangId == html && editorHasSelection"
-            },
-            {
-               "command": "css-sort.max",
-               "group": "sort-it@2",
-               "when": "resourceLangId == html && editorHasSelection"
-            },
-            {
-               "command": "css-sort.min",
-               "group": "sort-it@3",
-               "when": "resourceLangId == css && editorHasSelection"
-            },
-            {
-               "command": "css-sort.max",
-               "group": "sort-it@4",
-               "when": "resourceLangId == css && editorHasSelection"
-            },
-            {
-               "command": "css-sort.min",
-               "group": "sort-it@5",
-               "when": "resourceLangId == scss && editorHasSelection"
-            },
-            {
-               "command": "css-sort.max",
-               "group": "sort-it@6",
-               "when": "resourceLangId == scss && editorHasSelection"
-            },
-            {
-               "command": "css-sort.min",
-               "group": "sort-it@7",
-               "when": "resourceLangId == svelte && editorHasSelection"
-            },
-            {
-               "command": "css-sort.max",
-               "group": "sort-it@8",
-               "when": "resourceLangId == svelte && editorHasSelection"
-            },
-            {
-               "command": "css-sort.min",
-               "group": "sort-it@9",
-               "when": "resourceLangId == vue && editorHasSelection"
-            },
-            {
-               "command": "css-sort.max",
-               "group": "sort-it@10",
-               "when": "resourceLangId == vue && editorHasSelection"
-            },
-            {
-               "command": "css-sort.min",
-               "group": "sort-it@11",
-               "when": "resourceLangId == javascript && editorHasSelection"
-            },
-            {
-               "command": "css-sort.max",
-               "group": "sort-it@12",
-               "when": "resourceLangId == javascript && editorHasSelection"
-            },
-            {
-               "command": "css-sort.min",
-               "group": "sort-it@13",
-               "when": "resourceLangId == javascriptreact && editorHasSelection"
-            },
-            {
-               "command": "css-sort.max",
-               "group": "sort-it@14",
-               "when": "resourceLangId == javascriptreact && editorHasSelection"
-            },
-            {
-               "command": "css-sort.min",
-               "group": "sort-it@15",
-               "when": "resourceLangId == typescript && editorHasSelection"
-            },
-            {
-               "command": "css-sort.max",
-               "group": "sort-it@16",
-               "when": "resourceLangId == typescript && editorHasSelection"
-            },
-            {
-               "command": "css-sort.min",
-               "group": "sort-it@17",
-               "when": "resourceLangId == typescriptreact && editorHasSelection"
-            },
-            {
-               "command": "css-sort.max",
-               "group": "sort-it@18",
-               "when": "resourceLangId == typescriptreact && editorHasSelection"
-            }
-         ]
+  "name": "css-sort",
+  "displayName": "Sort CSS Properties",
+  "description": "Vscode extension to sort your CSS properties, and make them easy to read....",
+  "version": "1.0.1",
+  "engines": {
+    "vscode": "^1.61.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apriliandi246/vscode-css-sort"
+  },
+  "publisher": "apriliandi246",
+  "categories": [
+    "Other"
+  ],
+  "icon": "icon/icon.jpeg",
+  "activationEvents": [
+    "onCommand:css-sort.min",
+    "onCommand:css-sort.max"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "css-sort.min",
+        "title": "Css Sort - min     👇"
+      },
+      {
+        "command": "css-sort.max",
+        "title": "Css Sort - max     👆"
       }
-   },
-   "scripts": {
-      "vscode:prepublish": "npm run package",
-      "compile": "webpack --config ./build/node-extension.webpack.config.js",
-      "watch": "webpack --watch --config ./build/node-extension.webpack.config.js",
-      "package": "webpack --mode production --devtool hidden-source-map --config ./build/node-extension.webpack.config.js",
-      "test-compile": "tsc -p ./",
-      "test-watch": "tsc -watch -p ./",
-      "pretest": "npm run test-compile && npm run lint",
-      "lint": "eslint src --ext ts",
-      "test": "node ./out/test/runTest.js"
-   },
-   "devDependencies": {
-      "@types/css-tree": "^1.0.5",
-      "@types/glob": "^7.1.3",
-      "@types/mocha": "^8.0.4",
-      "@types/node": "^12.11.7",
-      "@types/vscode": "^1.53.0",
-      "@typescript-eslint/eslint-plugin": "^4.9.0",
-      "@typescript-eslint/parser": "^4.9.0",
-      "eslint": "^7.15.0",
-      "glob": "^7.1.6",
-      "mocha": "^8.1.3",
-      "ts-loader": "^8.0.11",
-      "typescript": "^4.1.2",
-      "vscode-test": "^1.4.1",
-      "webpack": "^5.10.0",
-      "webpack-cli": "^4.2.0"
-   },
-   "dependencies": {
-      "css-tree": "^1.1.2"
-   }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "css-sort.min",
+          "group": "sort-it@1",
+          "when": "resourceLangId == html && editorHasSelection"
+        },
+        {
+          "command": "css-sort.max",
+          "group": "sort-it@2",
+          "when": "resourceLangId == html && editorHasSelection"
+        },
+        {
+          "command": "css-sort.min",
+          "group": "sort-it@3",
+          "when": "resourceLangId == css && editorHasSelection"
+        },
+        {
+          "command": "css-sort.max",
+          "group": "sort-it@4",
+          "when": "resourceLangId == css && editorHasSelection"
+        },
+        {
+          "command": "css-sort.min",
+          "group": "sort-it@5",
+          "when": "resourceLangId == scss && editorHasSelection"
+        },
+        {
+          "command": "css-sort.max",
+          "group": "sort-it@6",
+          "when": "resourceLangId == scss && editorHasSelection"
+        },
+        {
+          "command": "css-sort.min",
+          "group": "sort-it@7",
+          "when": "resourceLangId == svelte && editorHasSelection"
+        },
+        {
+          "command": "css-sort.max",
+          "group": "sort-it@8",
+          "when": "resourceLangId == svelte && editorHasSelection"
+        },
+        {
+          "command": "css-sort.min",
+          "group": "sort-it@9",
+          "when": "resourceLangId == vue && editorHasSelection"
+        },
+        {
+          "command": "css-sort.max",
+          "group": "sort-it@10",
+          "when": "resourceLangId == vue && editorHasSelection"
+        },
+        {
+          "command": "css-sort.min",
+          "group": "sort-it@11",
+          "when": "resourceLangId == javascript && editorHasSelection"
+        },
+        {
+          "command": "css-sort.max",
+          "group": "sort-it@12",
+          "when": "resourceLangId == javascript && editorHasSelection"
+        },
+        {
+          "command": "css-sort.min",
+          "group": "sort-it@13",
+          "when": "resourceLangId == javascriptreact && editorHasSelection"
+        },
+        {
+          "command": "css-sort.max",
+          "group": "sort-it@14",
+          "when": "resourceLangId == javascriptreact && editorHasSelection"
+        },
+        {
+          "command": "css-sort.min",
+          "group": "sort-it@15",
+          "when": "resourceLangId == typescript && editorHasSelection"
+        },
+        {
+          "command": "css-sort.max",
+          "group": "sort-it@16",
+          "when": "resourceLangId == typescript && editorHasSelection"
+        },
+        {
+          "command": "css-sort.min",
+          "group": "sort-it@17",
+          "when": "resourceLangId == typescriptreact && editorHasSelection"
+        },
+        {
+          "command": "css-sort.max",
+          "group": "sort-it@18",
+          "when": "resourceLangId == typescriptreact && editorHasSelection"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack --config ./build/node-extension.webpack.config.js",
+    "watch": "webpack --watch --config ./build/node-extension.webpack.config.js",
+    "package": "webpack --mode production --devtool hidden-source-map --config ./build/node-extension.webpack.config.js",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/css-tree": "^1.0.6",
+    "@types/glob": "^7.1.4",
+    "@types/node": "^16.11.1",
+    "@types/vscode": "^1.61.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.1",
+    "glob": "^7.2.0",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.4",
+    "vscode-test": "^1.6.1",
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0"
+  },
+  "dependencies": {
+    "css-tree": "^1.1.3"
+  }
 }
